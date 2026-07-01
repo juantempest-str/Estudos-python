@@ -1,2 +1,7 @@
 Alvo: Charmander | Tipo: fire | HP: 39 | ATK: 52
 Alvo: Squirtle | Tipo: water | HP: 44 | ATK: 48
+Alvo: Charizard | Tipo: fire | HP: 78 | ATK: 84
+Alvo: Scizor | Tipo: bug | HP: 70 | ATK: 130
+Alvo: Dragonite | Tipo: dragon | HP: 91 | ATK: 134
+Alvo: Charizard | Tipo: fire | HP: 78 | ATK: 84
+Alvo: Scizor | Tipo: bug | HP: 70 | ATK: 130

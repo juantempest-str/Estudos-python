@@ -1,4 +1,8 @@
 import requests
+def salvar_relatorio(nome, tipo, hp, ataque):
+    with open("relatorio_capturas.txt", "a") as arquivo:
+        arquivo.write(f"Alvo: {nome} | Tipo: {tipo} | HP: {hp} | ATK: {ataque}\n")
+    print("[✓] Dados salvos no relatório local com sucesso!")
 print("=== TERMINAL DE CONSULTA DE DADOS CONTÍNUO ===")
 print("(Digite 'sair' para encerrar o programa)")
 print("=========================================")
@@ -14,16 +18,19 @@ while alvo!= "sair":
     resposta = requests.get(url)
     if resposta.status_code == 200:
         dados = resposta.json()
+        nome_alvo = dados['name'].capitalize()
         tipo_principal = dados['types'][0]['type']['name']
         hp = dados['stats'][0]['base_stat']
         ataque = dados['stats'][1]['base_stat']
-        print(f"[ REGISTRO LOCALIZADO: {dados['name'].capitalize()} ]")
+        
+        print(f"\n[ REGISTRO LOCALIZADO: {nome_alvo} ]")
         print(f"Tipo Primário: {tipo_principal}")
         print(f"HP Base: {hp}")
         print(f"Ataque Base: {ataque}")
-        print("==================================================")
+        salvar_relatorio(nome_alvo, tipo_principal, hp, ataque)
+        print("-----------------------------------------\n")
         with open("relatorio_capturas.txt", "a") as arquivo:
             arquivo.write(f"Alvo: {dados['name'].capitalize()} | Tipo: {tipo_principal} | HP: {hp} | ATK: {ataque}\n")
             print("Dados salvos no relatório local com sucesso!")
-else:
-    print("[ FALHA ] Alvo não localizado. Verifique a ortografia e tente novamente.")
+    else:
+       print("[ FALHA ] Alvo não localizado. Verifique a ortografia e tente novamente.\n")
