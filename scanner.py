@@ -22,5 +22,8 @@ while alvo!= "sair":
         print(f"HP Base: {hp}")
         print(f"Ataque Base: {ataque}")
         print("==================================================")
-    else:
-        print("[ FALHA ] Alvo não localizado. Verifique a ortografia e tente novamente.")
+        with open("relatorio_capturas.txt", "a") as arquivo:
+            arquivo.write(f"Alvo: {dados['name'].capitalize()} | Tipo: {tipo_principal} | HP: {hp} | ATK: {ataque}\n")
+            print("Dados salvos no relatório local com sucesso!")
+else:
+    print("[ FALHA ] Alvo não localizado. Verifique a ortografia e tente novamente.")

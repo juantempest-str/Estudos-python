@@ -1,0 +1,2 @@
+Alvo: Charmander | Tipo: fire | HP: 39 | ATK: 52
+Alvo: Squirtle | Tipo: water | HP: 44 | ATK: 48
