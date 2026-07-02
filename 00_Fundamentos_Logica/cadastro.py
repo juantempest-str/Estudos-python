@@ -1,3 +1,5 @@
+# Esse sistema criei para aprender a fazer cadastros 'infinitos'
+
 itens_inspecao = []
 comando = ""
 print("Bem-vindo ao Sistema de Cadastro. (Digite 'sair' para encerrar)")

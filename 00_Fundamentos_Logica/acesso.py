@@ -1,3 +1,5 @@
+# Sistema de senhas, desenvolvi pra aprender o uso de while, if e else
+
 senha_digitada = ""
 while senha_digitada != "777":
     senha_digitada = input("Digite a senha de acesso ao sistema:  ")
