@@ -4,5 +4,5 @@ distancia = float(input("Qual a sua distância percorrida em metros? "))
 if nota >= 7 and distancia >= 2400:
    print(f"Candidato APROVADO! Bem-vindo à equipe {nome}.")
 else:
-    nota < 7 or distancia < 2400
     print(f"Candidato REPROVADO.")
+    
