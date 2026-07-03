@@ -1,25 +1,19 @@
 import requests
-
-print("=== SISTEMA DE RASTREIO ===")
-cep_alvo = input("Informe o CEP (apenas números): ")
-url = f"https://viacep.com.br/ws/{cep_alvo}/json/"
-
-print(" Aguarde... ")
+import config
+print("=== TERMINAL DE ACESSO RESTRITO ===")
+chave_api = config.CHAVE_NASA
+url = f"https://api.nasa.gov/planetary/apod?api_key={chave_api}"
+print("Estabelecendo conexão segura com a Base de Dados da NASA...\n")
 resposta = requests.get(url)
-
-# 1. Blindagem de Conexão: Verifica se a internet e o site estão ok (Código 200)
 if resposta.status_code == 200:
     dados = resposta.json()
-    
-    # 2. Blindagem de Dados: Verifica se o CEP realmente existe na base
-    if "erro" in dados:
-        print("\n[!] FALHA: CEP não localizado na base de dados.")
-    else:
-        print("\n[ DADOS INTERCEPTADOS COM SUCESSO ]")
-        # O uso do .get() evita erros caso algum campo venha vazio da API
-        print(f"Logradouro: {dados.get('logradouro', 'N/A')}")
-        print(f"Bairro: {dados.get('bairro', 'N/A')}")
-        print(f"Cidade: {dados.get('localidade', 'N/A')} - {dados.get('uf', 'N/A')}")
-        print("=======================================")
+    titulo = dados['title']
+    data = dados['date']
+    explicacao = dados['explanation']
+    print("[ ACESSO AUTORIZADO: DADOS RECEBIDOS ]")
+    print(f"Data Estelar: {data}")
+    print(f"Registro: {titulo}")
+    print("-----------------------------------")
+    print("Resumo do Relatório (Em Inglês):")
 else:
-    print(f"\n[!] ERRO CRÍTICO: Falha na interceptação. Servidor retornou código {resposta.status_code}")
+    print(f"[ ACESSO NEGADO ] Código do Erro: {resposta.status_code}") 
